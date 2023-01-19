@@ -3,14 +3,16 @@ import mongoose from "mongoose"
 import AddNewMessage from "./router/Messages.js";
 import Project from "./router/Project.js";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 const app =express();
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'https://front-api.onrender.com', 
   credentials:true,  
   optionSuccessStatus:200 ,  
 }
 const PORT=process.env.PORT || 4000
-const mongooseUrl="mongodb+srv://naim:234@cluster0.gecowfn.mongodb.net/gestion?retryWrites=true&w=majority";
+const mongooseUrl=process.env.MongoUrl;
 const connect = async () => {
     try {
       mongoose.connect(
